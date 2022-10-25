@@ -1,0 +1,42 @@
+<h1 class="mt-5">Selectores anidados</h1>
+
+<hr>
+
+<form (ngSubmit)="someter()" [formGroup]="miForm">
+
+    <div class="row">
+        <div class="col">
+            <!-- Regiones -->
+            <label class="form-label">Continente:</label>
+            <select  class="form-control" formControlName="region">
+                <option value="">-- Seleccione Region --</option>
+                <option *ngFor="let region of regiones" [value]="region | lowercase">{{region}}</option>
+            </select>
+            <div class="my-2"></div>
+
+            <!-- Paises -->
+            <select class="form-control" formControlName="pais">
+                <option value="">-- Seleccione un país --</option>
+                <option *ngFor="let pais of paises" [value]="pais.alpha3Code">{{pais.name}}</option>
+            </select>
+            <div class="my-2"></div>
+
+            <!-- Fronteras -->
+            <select class="form-control" formControlName="frontera">
+                <option value="">-- Seleccione una frontera --</option>
+                <option *ngFor="let frontera of fronteras" [value]="frontera">{{frontera}}</option>
+            </select>
+            <div class="my-2"></div>
+
+            <div *ngIf="cargando" class="alert bg-info">Cargando...</div>
+
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary form-control my-2">Someter</button>
+
+</form>
+
+<h3>Formulario:</h3>
+<pre>Es valido?: {{miForm.valid}}</pre>
+<pre>{{miForm.value | json}}</pre>
