@@ -22,8 +22,7 @@ export class PaisesComponent implements OnInit {
     frontera: [{ value: '', disabled: true }, [Validators.required]],
   })
 
-  constructor(private fb: FormBuilder,
-    private paisesSvc: PaisesService) { }
+  constructor(private fb: FormBuilder, private paisesSvc: PaisesService) { }
 
 
   ngOnInit(): void {
